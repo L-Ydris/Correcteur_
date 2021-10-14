@@ -6,7 +6,6 @@ import java.util.Vector;
 public class ReadFile {
 
     String file;
-
     public ReadFile(String file) {
         this.file = file;
     }

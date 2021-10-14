@@ -20,4 +20,8 @@ public class Levenshtein {
             }
         }
     }
+
+    public void insertLetter(char letter){}
+    public void replaceLetter(char letter, char newLetter){}
+    public void removeLetter(char letter){}
 }
