@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class ReadFile {
 
     String file;
-
     public ReadFile(String file) {
         this.file = file;
     }
