@@ -8,9 +8,7 @@ public class Levenshtein {
         this.str2 = str2;
     }
     public int distance(){
-            // A 2-D matrix to store previously calculated
-            // answers of subproblems in order
-            // to obtain the final
+
 
             int[][] mat = new int[str1.length() + 1][str2.length() + 1];
 
@@ -21,20 +19,17 @@ public class Levenshtein {
                     if (i == 0) {
                         mat[i][j] = j;
                     }
-                    // If str2 is empty, all characters of str1
+                    // si str2 iest vide, tous les chars de str1 sont enlevés
                     // are removed, which is the only possible
                     //  method of conversion with minimum
                     //  operations.
                     else if (j == 0) {
                         mat[i][j] = i;
-                    }
-                    else {
-                        // find the minimum among three
-                        // operations below
-                        mat[i][j] = minm_edits(mat[i - 1][j - 1]
-                                        + NumOfReplacement(str1.charAt(i - 1),str2.charAt(j - 1)), // replace
-                                mat[i - 1][j] + 1, // delete
-                                mat[i][j - 1] + 1); // insert
+                    } else {
+
+                        mat[i][j] = minm_edits(mat[i - 1][j - 1]+ NumOfReplacement(str1.charAt(i - 1),str2.charAt(j - 1)), // on remplace
+                                mat[i - 1][j] + 1, // on supprime
+                                mat[i][j - 1] + 1); // on insert
                     }
                 }
             }

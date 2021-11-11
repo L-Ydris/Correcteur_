@@ -1,7 +1,7 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Vector;
 
 public class ReadFile {
 
@@ -14,8 +14,20 @@ public class ReadFile {
         return file;
     }
 
-    public void reading() throws FileNotFoundException {
-        Scanner sc = new Scanner(new File(getFile()));
+    public ArrayList<String> reading(){
+        ArrayList<String> ListeFautes=new ArrayList<String>();
+        try{
+            FileInputStream file = new FileInputStream(this.file);
+            Scanner scanner=new Scanner(file);
+            while(scanner.hasNextLine()){
+                ListeFautes.add(scanner.nextLine());
+            }
+            return ListeFautes;
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
 
+        return ListeFautes;
     }
 }

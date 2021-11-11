@@ -8,39 +8,24 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-//    public static void main(String[] args) throws FileNotFoundException {
-//        //Levenshtein levenshtein = new Levenshtein("heelooo","helloqs");
-//        //levenshtein.distance();
-//
-//    }
+
 
     public static void main(String[] args) {
 
-        ArrayList<String> ListeFautes=new ArrayList<String>();
+        ReadFile readFile = new ReadFile("fautes.txt");
 
-        try{
-            FileInputStream file = new FileInputStream("minidico.txt");
-            Scanner scanner=new Scanner(file);
-            while(scanner.hasNextLine()){
-                ListeFautes.add(scanner.nextLine());
-            }
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
+        ArrayList<String> Fautes=new ArrayList<String>(readFile.reading());
 
         long time1=System.nanoTime();
 
-        for (String str: ListeFautes) {
-
-            Trigramme trigramme = new Trigramme(str);
-            trigramme.correcteur();
+        for (String faute: Fautes) {
+            Trigramme trigramme = new Trigramme(faute);
+            String lemotcorrigé = trigramme.correcteur();
         }
 
         long time2=System.nanoTime();
-        //moyenne=moyenne+(time2-time1);
 
-        System.out.println("la correction des mots a mis "+(time2-time1)+" nanoseconds");
+        System.out.println("la correction des mots a durée "+(time2-time1)*Math.pow(0.1,9) +" secondes");
     }
 
 }
